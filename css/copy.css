@@ -1,0 +1,388 @@
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.section {
+	position: relative;
+	overflow: hidden;
+}
+
+/*.clearfix:before是清除塌陷的*/
+.clearfix:before,
+.clearfix:after {
+	content: ' ';
+	display: table;
+}
+/*clearfix:after是清除浮动的*/
+
+.clearfix:after {
+	clear: both;
+}
+
+/* 第一屏 */
+.first .logo {
+	height: 186px;
+	margin-top: 100px;
+	background: url(./images/logo.png) center no-repeat;
+}
+
+.first .text {
+	text-align: center;
+	margin: 70px 0 80px;
+}
+
+.first .info {
+	height: 49px;
+	background: url(../images/info_1.png) center no-repeat;
+}
+
+/*过渡的效果要有两种状态，起始状态和结束状态
+
+它的起始状态是有距离的，然后过渡到没有距离
+下边的current是结束状态*/
+
+.first .text img {
+	margin: 0 34px;
+	opacity: 0;
+}
+/* 第一屏的动画  要添加一个类名current*/
+.current .text img {
+	margin: 0 5px;
+	opacity: 1;
+	/*过渡  入场需要过渡 ，出场快速..*/
+	transition: all 1s ease;
+}
+
+
+
+/* 第二屏 */
+
+/*获取是second下的div，给这个div设置为伸缩盒子
+那么他的两个孩子就可以应用这个样式了*/
+.second > div {
+	display: flex;
+	// 水平两端对齐
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 80px;
+}
+
+.second .shield {
+	width: 430px;
+	font-size: 0;
+}
+
+.second .info {
+	width: 635px;
+	height: 309px;
+	background: url(../images/info_2.png);
+}
+
+.second img:nth-child(1) {
+    transform: translate(35px, 78px) rotate(45deg);
+}
+
+.second img:nth-child(2) {
+    transform: translate(135px, 282px) rotate(15deg);
+}
+
+.second img:nth-child(3) {
+    transform: translate(187px, 62px) rotate(15deg);
+}
+
+.second img:nth-child(4) {
+    transform: translate(10px, 162px) rotate(30deg);
+}
+
+.second img:nth-child(5) {
+    transform: translate(465px, 522px) rotate(30deg);
+}
+
+.second img:nth-child(6) {
+    transform: translate(480px, 62px) rotate(90deg);
+}
+
+.second img:nth-child(7) {
+    transform: translate(180px, -305px) rotate(80deg);
+}
+
+.second img:nth-child(8) {
+    transform: translate(300px, -22px) rotate(70deg);
+}
+
+.second img:nth-child(9) {
+    transform: translate(280px, -322px) rotate(60deg);
+}
+
+.second .info {
+    width: 635px;
+    height: 309px;
+    background: url(../images/info_2.png);
+}
+
+    /*动画*/
+.second.current img{
+
+        /* 过渡*/
+    transition:all 1s;
+        /* 复位*/
+    transform: translate(0px, 0px) rotate(0deg);
+}
+
+/* 第三屏 */
+.third > div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 80px;
+}
+
+.third .info {
+	width: 631px;
+	height: 278px;
+	background: url(../images/info_3.png);
+}
+
+.third .circle {
+	width: 453px;
+	height: 449px;
+	background: url(../images/circle.png);
+}
+
+.third .rocket {
+	width: 203px;
+	height: 204px;
+	background: url(../images/rocket.png);
+
+	position: absolute;
+	left: 100px;
+	bottom: -204px;
+}
+
+
+.current .rocket {
+	transform: translate(920px, -400px);
+	transition: all 1s ease-in-out;
+}
+
+
+
+
+
+/* 第四屏 */
+.fourth > div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 80px;
+}
+
+.fourth .search {
+	width: 530px;
+	height: 300px;
+
+	transform: translateX(-120%);
+}
+
+.fourth .search-box {
+	width: 100%;
+	height: 66px;
+	background: url(../images/search.png);
+
+	position: relative;
+}
+
+.fourth .search-box .key {
+	width: 0;
+	height: 22px;
+	background: url(../images/key.png);
+
+	position: absolute;
+	left: 20px;
+	top: 24px;
+}
+
+.fourth .result-box {
+	width: 100%;
+	height: 372px;
+	overflow: hidden;
+/*利用定位让图片压在搜索框下边一点*/
+	position: relative;
+	top: -13px;
+}
+
+.fourth .result {
+	width: 100%;
+	height: 100%;
+	background: url(../images/result.png);
+
+	transform: translateY(-100%);
+}
+
+.fourth .info {
+	width: 612px;
+	height: 299px;
+	background: url(../images/info_4.png);
+}
+
+.current .search {
+	transform: translateX(0px);
+	transition: all 1s ease-in-out;
+}
+
+.current .search-box .key {
+	/*width: 99px;
+	transition: all 1s 1.5s linear;*/
+	animation: typing 1.5s 1.5s steps(5) forwards;
+}
+
+@keyframes typing {
+	from {
+		width: 0px;
+	}
+
+	to {
+		width: 99px;
+	}
+}
+
+.current .result {
+	transform: translateY(0px);
+	transition: all 1s 3.5s ease-in-out;
+}
+
+
+
+
+
+/* 第五屏 */
+.fifth > div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.fifth .info {
+	width: 100%;
+	height: 200px;
+	background: url(../images/info_5.png) center no-repeat;
+}
+
+.fifth .broswer {
+	width: 1004px;
+	flex: 1;
+	background: rgba(255, 255, 255, 0.3);
+
+	position: relative;
+}
+
+.fifth .broswer > div[class*="line"] {
+	position: absolute;
+}
+
+.fifth .broswer .lineleft {
+	height: 100%;
+	border-left: 1px solid #FFF;
+	left: 0;
+	top: 0;
+
+	transform: translateY(-100%);
+}
+
+.fifth .broswer .lineright {
+	height: 100%;
+	border-left: 1px solid #FFF;
+	right: 0;
+	top: 0;
+
+	transform: translateY(100%);
+}
+
+.fifth .broswer .linetop {
+	width: 100%;
+	border-top: 1px solid #FFF;
+	top: 0;
+	left: 0;
+
+	transform: translateX(100%);
+}
+
+.fifth .broswer .linebottom {
+	width: 100%;
+	border-top: 1px solid #FFF;
+	
+	bottom: 0;
+	left: 0;
+}
+
+.fifth .broswer .toolbar {
+	width: 100%;
+	height: 80px;
+	background: url(../images/toolbar.png) no-repeat;
+	opacity: 0;
+}
+
+.fifth .broswer .border {
+	position: absolute;
+	left: 70px;
+	top: 30px;
+	/*width: 920px;*/
+	width: 0;
+	overflow: hidden;
+}
+
+.fifth .broswer .inner {
+	/*width: 100%;*/
+	height: 26px;
+	border-radius: 2px;
+	border: 1px solid #FFF;
+}
+
+.fifth .broswer .task {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	width: 100%;
+	height: 29px;
+	border-top: 1px solid #FFF;
+}
+
+.fifth .broswer .extra {
+	width: 100%;
+	height: 100%;
+	background: url(../images/extra.png) right center no-repeat;
+	opacity: 0;
+}
+
+.current .broswer .lineleft {
+	transform: translateY(0px);
+	transition: all 1s ease-in-out;
+}
+
+.current .broswer .linetop{
+	transform: translateX(0px);
+	transition: all 1s ease-in-out;
+}
+
+.current .broswer .lineright {
+	transform: translateY(0px);
+	transition: all 1s ease-in-out;
+}
+
+.current .broswer .toolbar {
+	opacity: 1;
+	transition: all 1s 1.3s ease-in-out;
+}
+
+.current .broswer .border {
+	width: 920px;
+	transition: all 1s 1.3s ease-in-out;
+}
+
+.current .broswer .extra {
+	opacity: 1;
+	transition: all 1s 2s ease-in-out;
+}
